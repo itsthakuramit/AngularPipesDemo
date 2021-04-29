@@ -1,0 +1,36 @@
+<div>
+    <h1>Date Pipes</h1>
+    <p>{{value}}</p>
+    <p>Birthdate: {{ value | date : 'dd/MM/YYYY' }}</p>
+    <p>Birthdate: {{ value | date : 'YYYY/MM/dd' }}</p>
+</div>
+<div>
+    <h1>String lower and Upper Case PIpes</h1>
+    <p>{{name}}</p>
+    <p>lowercase: {{name | lowercase}}</p>
+    <p>Uppercase: {{name | uppercase}}</p>
+</div>
+<div>
+    <h1>Custome Pipes</h1>
+    <div class="form-group">
+        <label for="search-text">Search Text</label>
+        <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+            [(ngModel)]="searchNotes" placeholder="Enter text to search" autofocus>
+    </div>
+    <div class="matStyle">
+
+        <mat-card class="example-card" *ngFor="let note of NotesList | notesfilter: searchNotes">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{note.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{note.status | notes}}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
